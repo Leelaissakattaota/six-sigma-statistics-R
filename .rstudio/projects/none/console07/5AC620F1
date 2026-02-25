@@ -1,0 +1,5 @@
+git init
+akattaota/six-sigma-statistics-R.git
+git branch -M main
+git push -u origin mainReinitialized existing Git repository in /home/rstudio/.git/
+]0;/home/rstudiorstudio@0960d9077a41:~$ git add .
