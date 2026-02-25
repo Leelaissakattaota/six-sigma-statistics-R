@@ -1,20 +1,31 @@
-# Navigate to your project folder
-]0;/home/rstudiorstudio@0960d9077a41:~$ cd path/to/your/Six-Sigma-R-Analysis
-bash: cd: path/to/your/Six-Sigma-R-Analysis: No such file or directory
-]0;/home/rstudiorstudio@0960d9077a41:~$ 
-]0;/home/rstudiorstudio@0960d9077a41:~$ # Initialize the repository
-]0;/home/rstudiorstudio@0960d9077a41:~$ git init
-it add .
-
-# Commit your changes
-git commit -m "Initial commit: Six Sigma basic statistics script"
-
-# Link to a new GitHub repository (replace with your actual URL)
-git remote add origin https://github.com/Leelaissakattaota/Six-Sigma-R-Analysis.git
-
-# Push to the main branch
-git branch -M main
-git push -u origin mainReinitialized existing Git repository in /home/rstudio/.git/
-]0;/home/rstudiorstudio@0960d9077a41:~$ 
-]0;/home/rstudiorstudio@0960d9077a41:~$ # Add your files
+git remote remove origin
+]0;/home/rstudiorstudio@0960d9077a41:~$ git remote remove origin
+fatal: No such remote: 'origin'
+]0;/home/rstudiorstudio@0960d9077a41:~$ git remote add origin https://github.com/Leelaisakkatataota/Six-Sigma-Basic-Statistics.R.git
+]0;/home/rstudiorstudio@0960d9077a41:~$ git remote -v
+origin	https://github.com/Leelaisakkatataota/Six-Sigma-Basic-Statistics.R.git (fetch)
+origin	https://github.com/Leelaisakkatataota/Six-Sigma-Basic-Statistics.R.git (push)
+]0;/home/rstudiorstudio@0960d9077a41:~$ git branch -M main
+]0;/home/rstudiorstudio@0960d9077a41:~$ git push -u origin main
+remote: Repository not found.
+fatal: repository 'https://github.com/Leelaisakkatataota/Six-Sigma-Basic-Statistics.R.git/' not found
+]0;/home/rstudiorstudio@0960d9077a41:~$ git@github.com:Leelaisakkatataota/Six-Sigma-Basic-Statistics.R.git
+bash: git@github.com:Leelaisakkatataota/Six-Sigma-Basic-Statistics.R.git: No such file or directory
+]0;/home/rstudiorstudio@0960d9077a41:~$ git remote remove origin
+]0;/home/rstudiorstudio@0960d9077a41:~$ git remote add origin https://github.com/Leelaisakkatataota/Six-Sigma-Basic-Statistics.R.git
+]0;/home/rstudiorstudio@0960d9077a41:~$ git remote -v
+origin	https://github.com/Leelaisakkatataota/Six-Sigma-Basic-Statistics.R.git (fetch)
+origin	https://github.com/Leelaisakkatataota/Six-Sigma-Basic-Statistics.R.git (push)
+]0;/home/rstudiorstudio@0960d9077a41:~$ git branch -M main
+]0;/home/rstudiorstudio@0960d9077a41:~$ git push -u origin main
+remote: Repository not found.
+fatal: repository 'https://github.com/Leelaisakkatataota/Six-Sigma-Basic-Statistics.R.git/' not found
+]0;/home/rstudiorstudio@0960d9077a41:~$ ^C
+]0;/home/rstudiorstudio@0960d9077a41:~$ ^C
+]0;/home/rstudiorstudio@0960d9077a41:~$ .Rhistory
+bash: .Rhistory: command not found
+]0;/home/rstudiorstudio@0960d9077a41:~$ .RData
+bash: .RData: command not found
+]0;/home/rstudiorstudio@0960d9077a41:~$ .Rproj.user
+bash: .Rproj.user: command not found
 ]0;/home/rstudiorstudio@0960d9077a41:~$ git add .
