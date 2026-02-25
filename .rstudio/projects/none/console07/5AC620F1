@@ -1,5 +1,20 @@
-git init
-akattaota/six-sigma-statistics-R.git
+# Navigate to your project folder
+]0;/home/rstudiorstudio@0960d9077a41:~$ cd path/to/your/Six-Sigma-R-Analysis
+bash: cd: path/to/your/Six-Sigma-R-Analysis: No such file or directory
+]0;/home/rstudiorstudio@0960d9077a41:~$ 
+]0;/home/rstudiorstudio@0960d9077a41:~$ # Initialize the repository
+]0;/home/rstudiorstudio@0960d9077a41:~$ git init
+it add .
+
+# Commit your changes
+git commit -m "Initial commit: Six Sigma basic statistics script"
+
+# Link to a new GitHub repository (replace with your actual URL)
+git remote add origin https://github.com/Leelaissakattaota/Six-Sigma-R-Analysis.git
+
+# Push to the main branch
 git branch -M main
 git push -u origin mainReinitialized existing Git repository in /home/rstudio/.git/
+]0;/home/rstudiorstudio@0960d9077a41:~$ 
+]0;/home/rstudiorstudio@0960d9077a41:~$ # Add your files
 ]0;/home/rstudiorstudio@0960d9077a41:~$ git add .
