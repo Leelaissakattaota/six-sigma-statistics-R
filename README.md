@@ -1,81 +1,150 @@
-# six-sigma-healthcare-analytics-R
+# 📊 Six Sigma: Basic Statistical Analysis in R
 
 ![R](https://img.shields.io/badge/Language-R-276DC3?style=for-the-badge&logo=r&logoColor=white)
 ![RStudio](https://img.shields.io/badge/IDE-RStudio-75AADB?style=for-the-badge&logo=rstudio&logoColor=white)
 ![Methodology](https://img.shields.io/badge/Methodology-Six%20Sigma%20DMAIC-2E7D32?style=for-the-badge)
-![Domain](https://img.shields.io/badge/Domain-Healthcare%20Analytics-0277BD?style=for-the-badge)
+![Domain](https://img.shields.io/badge/Domain-Healthcare%20Analytics-02779B?style=for-the-badge)
+![Course](https://img.shields.io/badge/Course-Coursera%20Guided%20Project-0056D2?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)
 
 ---
 
-## Project Overview
+## 📌 Project Overview
 
-This project applies Six Sigma statistical methodology to real-world healthcare data, specifically analyzing patient **Time to Admit** metrics using the R programming language. It demonstrates a complete end-to-end statistical workflow — from raw data wrangling all the way through distribution fitting — showing how quality engineers and data analysts identify and solve process inefficiency problems in regulated industries.
+This project applies **Six Sigma statistical methodology** to real-world 
+healthcare data — specifically analyzing **patient Time to Admit (TTA)** 
+metrics across an Accident & Emergency (A&E) department using R. 
+
+It demonstrates a complete end-to-end statistical workflow — from raw 
+data loading and wrangling, through descriptive statistics, sampling, 
+visualization, distribution generation, and distribution fitting — 
+showing how quality engineers and data analysts identify and solve 
+process inefficiency problems in healthcare.
 
 **Domain:** Healthcare Process Quality  
 **Methodology:** Six Sigma DMAIC  
+**Dataset:** Patient admission records (PatientID, TimeToAdmit, Category, PatientAge)  
 **Language:** R  
 
 ---
 
-## Problem Statement
+## 📂 Dataset
 
-Hospitals struggle with inconsistent patient admission times. This project uses Six Sigma statistical tools to identify patterns and outliers in admission data, measure process spread and central tendency, and validate statistical assumptions required for process capability analysis.
-
----
-
-## Tech Stack
-
-![Language](https://img.shields.io/badge/Language-R-276DC3?style=flat-square&logo=r&logoColor=white)
-![IDE](https://img.shields.io/badge/IDE-RStudio-75AADB?style=flat-square&logo=rstudio&logoColor=white)
-![Fitting](https://img.shields.io/badge/Library-fitdistrplus-orange?style=flat-square)
-![Testing](https://img.shields.io/badge/Library-nortest-red?style=flat-square)
-![Viz](https://img.shields.io/badge/Visualization-Base%20R%20Graphics-blue?style=flat-square)
+| Column | Description |
+|---|---|
+| `PatientID` | Unique patient identifier |
+| `TimeToAdmit` | Time taken to admit patient (minutes) |
+| `Category` | A&E category — Major A&E, Speciality, Minor Injury |
+| `PatientAge` | Age of the patient |
 
 ---
 
-## Project Structure
+## 🛠️ Tech Stack
+
+| Tool / Library | Purpose |
+|---|---|
+| **R** | Core programming language |
+| **RStudio** | Development environment |
+| **fitdistrplus** | Distribution fitting (Normal, Exponential, Log-Normal) |
+| **nortest** | Anderson-Darling normality test |
+| **Base R stats** | Descriptive stats, sampling, confidence intervals |
+| **Base R graphics** | Histograms, Boxplots, Normal curve overlay |
+
+---
+
+## 🚀 Project Workflow — 6 Tasks
+
+### ✅ Task 1 — Load & Explore Data
+- Loaded patient dataset (`data.csv`) into RStudio
+- Explored data structure, types, dimensions
+- Subset data by injury category (e.g. `Minor Injury`)
+- Inspected head, tail, and row slices of dataset
+
+```r
+dt = read.csv("~/data.csv")
+dt1 = subset(dt, Category == "Minor Injury")
+nrow(dt); head(dt); tail(dt)
 ```
-six-sigma-statistics-R/
-│
-├── Six Sigma Basic Statistics.R      # Main analysis script
-├── data.csv                          # Healthcare patient dataset
-└── README.md
+
+---
+
+### ✅ Task 2 — Calculate Centering & Spread
+- **Centering:** Mean, Median, Mode of `TimeToAdmit`
+- **Spread:** Standard Deviation, Variance, IQR, SPAN, RANGE
+- Custom `SummaryStats()` function for full statistical summary
+
+```r
+mean(x); median(x); Mode(x)
+sd(x); IQR; SPAN; RANGE
+summary(dt)
 ```
 
 ---
 
-## Workflow
+### ✅ Task 3 — Statistical Sampling & Confidence Intervals
+- Applied **Central Limit Theorem** — collected 1,000 samples of size 50
+- Computed **Standard Error of the Mean (SEM)**
+- Calculated **95%, 90%, and 99% Confidence Intervals**
 
-**Task 1 — Data Wrangling**  
-Imported the dataset and subset the data by injury category such as Minor Injury. Inspected data types, structure, and missing values to ensure data quality before analysis.
-
-**Task 2 — Descriptive Statistics**  
-Calculated centering metrics including Mean, Median, and Mode. Calculated spread metrics including Standard Deviation, Variance, IQR, and SPAN to understand process variation.
-
-**Task 3 — Statistical Sampling**  
-Applied the Central Limit Theorem by drawing 1,000 random samples from the dataset. Computed 95% Confidence Intervals to estimate true process parameters.
-
-**Task 4 — Data Visualization**  
-Created Histograms with Normal Curve overlays, Boxplots segmented by injury category, and Pareto Charts for defect prioritization and root cause identification.
-
-**Task 5 — Probability Distributions**  
-Generated and compared four distribution types — Uniform, Normal, Exponential, and Log-Normal — to understand which best describes the patient admission process.
-
-**Task 6 — Distribution Fitting**  
-Used Anderson-Darling and Kolmogorov-Smirnov goodness-of-fit tests to identify the best statistical model for patient Time to Admit data.
+```r
+p = SampledMeans(x, 50, 1000)
+se = sd(x)/sqrt(50)
+mean(x) - 1.96 * se  # 95% CI Lower
+mean(x) + 1.96 * se  # 95% CI Upper
+```
 
 ---
 
-## How to Run
+### ✅ Task 4 — Data Visualization
+- **Histogram** with Normal Curve overlay
+- **Boxplots** — overall and by A&E category (Major A&E, Speciality, Minor Injury)
+- **Pareto Chart** for defect/category prioritization
 
-Install the required R packages before running the script:
+```r
+hist(x, col = "gold2", freq = FALSE)
+curve(dnorm(x, mean=mean(x), sd=sd(x)), col="red", lwd=2, add=TRUE)
+boxplot(TimeToAdmit ~ Category, dt, col = "gold2")
+ParetoPlot(dt$Category, "A&E Category")
+```
+
+---
+
+### ✅ Task 5 — Generate & Compare Distributions
+Generated and compared 4 distribution types to understand process behavior:
+
+| Distribution | Function | Parameters |
+|---|---|---|
+| Uniform | `runif()` | min=5, max=10 |
+| Normal | `rnorm()` | Mean=10, SD=2 |
+| Exponential | `rexp()` | Lambda=1/5 |
+| Log-Normal | `rlnorm()` | MeanLog, SDLog |
+
+---
+
+### ✅ Task 6 — Distribution Fitting
+- Used **Anderson-Darling test** (`nortest`) to test normality
+- Used **Kolmogorov-Smirnov test** via `fitdistrplus` to fit distributions
+- Fitted Normal, Exponential, and Log-Normal distributions to TTA data
+
+```r
+ad.test(x)           # Anderson-Darling normality test
+d = fitdist(x, "norm")   # Fit Normal distribution
+d = fitdist(x, "exp")    # Fit Exponential distribution
+d = fitdist(x, "lnorm")  # Fit Log-Normal distribution
+ad.test(log(x))      # Normality after log transform
+```
+
+---
+
+## ⚙️ How to Run
+
+**Step 1 — Install required packages:**
 ```r
 install.packages("fitdistrplus")
 install.packages("nortest")
 ```
 
-Then open RStudio, set your working directory to the project folder, and run:
+**Step 2 — Set working directory and run:**
 ```r
 setwd("path/to/six-sigma-statistics-R")
 source("Six Sigma Basic Statistics.R")
@@ -83,13 +152,31 @@ source("Six Sigma Basic Statistics.R")
 
 ---
 
-## Key Learnings
+## 📈 Key Insights
 
-Applied Six Sigma DMAIC framework using statistical computing in R. Understood how distribution shape directly impacts process capability decisions. Practiced hypothesis testing using goodness-of-fit tests on real healthcare data. Built professional-grade visualizations suitable for process analysis reporting in regulated industries.
+- Identified that **TimeToAdmit** data follows a **Log-Normal distribution** 
+  rather than Normal — confirmed via Anderson-Darling and KS tests
+- **Minor Injury** category showed highest variation in admission times
+- **95% Confidence Interval** for mean TimeToAdmit computed from 
+  1,000 random samples of size 50
+- Pareto chart revealed which A&E categories contributed most 
+  to admission delays
 
 ---
 
-## Certifications
+## 🎓 Skills Demonstrated
+
+- Six Sigma DMAIC framework — Measure & Analyze phases
+- Descriptive statistics — Mean, Median, Mode, SD, IQR, SPAN
+- Statistical sampling & Central Limit Theorem
+- Confidence interval calculation (90%, 95%, 99%)
+- Distribution fitting & goodness-of-fit testing
+- Data visualization — Histogram, Boxplot, Pareto Chart
+- Healthcare data analysis in R
+
+---
+
+## 📜 Certifications
 
 | Certification | Issuer | Platform |
 |---|---|---|
@@ -100,11 +187,8 @@ Applied Six Sigma DMAIC framework using statistical computing in R. Understood h
 
 ---
 
-## Connect with Me
-
-**Leela A.** — AI/ML Engineer | Data Science Enthusiast  
-Bengaluru, India
+## 🤝 Connect with Me
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Leela%20A-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leela-a)
-[![GitHub](https://img.shields.io/badge/GitHub-Leelaissakattaota-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Leelaissakattaota)
 [![Gmail](https://img.shields.io/badge/Gmail-attotaleelaissak@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:attotaleelaissak@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Leelaissakattaota-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Leelaissakattaota)
